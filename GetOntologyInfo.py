@@ -23,31 +23,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-def getURL(ontology, property=""):
-     return f"https://www.ebi.ac.uk/ols/api/ontologies/{ontology}/{property}"
+import requests
+def GetURL(ontology, APIproperty=""):
+    return f"https://www.ebi.ac.uk/ols/api/ontologies/{ontology}/{APIproperty}"
 
 
-def printOntology(ontology, json):
+def PrintOntology(ontology, json):
     print("=====================")
     print(f"Ontology: {ontology}")
     print(f"The complete title for {ontology} is: ", json["config"]["title"])
     print(f"The description for {ontology} is: ", json["config"]["description"])
-    print(f"The number of terms is: ", json["numberOfTerms"])
-    print(f"THe current status is : ", json["status"])
+    print("The number of terms is: ", json["numberOfTerms"])
+    print("The current status is : ", json["status"])
     print("=====================")
 
-def getOntInfo(ontology, debug=False):
-        import requests
-        api_url = getURL(ontology)
-        response = requests.get(api_url)
-        if response.status_code != 200:
-            print(f"the request for {ontology} returned an invalid reponse - code ", response.status_code)
-            return
-        json = response.json()
-        if debug:
-            print(response.text)
-            print(response.json())
-        printOntology(ontology, json)
+def GetOntInfo(ontology, debug=False):
+    api_url = GetURL(ontology)
+    response = requests.get(api_url, timeout=10)
+    if response.status_code != 200:
+        print(f"the request for {ontology} returned an invalid reponse - code {response.status_code}")
+        return
+    json = response.json()
+    if debug:
+        print(response.text)
+        print(response.json())
+    PrintOntology(ontology, json)
 
-getOntInfo("agro")
-getOntInfo("efo")
+def main():
+    GetOntInfo("agro")
+    GetOntInfo("efo")
+
+if __name__ == "__main__":
+    main()
