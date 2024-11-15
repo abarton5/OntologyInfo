@@ -6,8 +6,12 @@ Requires:
 -  Python 3
 -  requests library (pip install requests)
 
-##Running
+## Running
 Can be ran in a command line with a compatable python environment with
-`python GetOntologyInfo.py`
+
+```
+python GetOntologyInfo.py
+```
+
 
 
