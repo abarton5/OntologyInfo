@@ -1,5 +1,5 @@
 # OntologyInfo
-A simply project for querying Ontology info using the REST API
+A simple project for querying Ontology info using the REST API
 
 ## Requirements
 Requires:
@@ -7,7 +7,7 @@ Requires:
 -  requests library (pip install requests)
 
 ## Running
-Can be ran in a command line with a compatable python environment with
+Can be ran in a command line with a compatible python environment with
 
 ```
 python GetOntologyInfo.py
@@ -15,7 +15,7 @@ python GetOntologyInfo.py
 
 ### Running with Docker
 
-A prebuilt docker image is availiable and can be ran with:
+A prebuilt docker image is available and can be ran with:
 
 ```
 docker run bartona029/python_ontology:alpine
